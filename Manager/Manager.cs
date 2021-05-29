@@ -1,4 +1,5 @@
-﻿using Bll.Query;
+﻿using Bll.Commands;
+using Bll.Query;
 using Serveur;
 using Serveur.Entities;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ namespace Bll
         private static Manager _instance;
         private readonly MonContexte _monContexte;
         private readonly OffreQuery _offreQuery;
+        private readonly OffreCommand _offreCommand;
 
         private Manager()
         {
             _monContexte = new MonContexte();
             _offreQuery = new OffreQuery(_monContexte);
+            _offreCommand = new OffreCommand(_monContexte);
         }
 
         public static Manager Instance
@@ -34,6 +37,11 @@ namespace Bll
         public List<Offre> GetAll()
         {
             return _offreQuery.GetOffres().ToList();
+        }
+
+        public int Save(Offre offre)
+        {
+            return _offreCommand.Save(offre);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Serveur.Entities
 
         public int StatutId { get; set; }
 
+        public Statut Statut { get; set; }
 
         public ICollection<Postulation> Postulations { get; set; }
     }
