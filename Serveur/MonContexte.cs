@@ -8,6 +8,7 @@ namespace Serveur
     {
         public MonContexte(): base("name=Cours1ConnexionString")
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MonContexte>());
         }
 
         public DbSet<Employe> Employes { get; set; }

@@ -17,7 +17,7 @@ namespace Serveur.Fluent
             HasKey(s => s.Id);
 
             Property(s => s.Id)
-                .HasColumnName("STAT_ID")
+                .HasColumnName("STA_ID")
                 .IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 

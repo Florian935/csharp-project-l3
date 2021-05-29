@@ -40,7 +40,7 @@ namespace Serveur.Fluent
                 .IsRequired();
 
             Property(o => o.StatutId)
-                .HasColumnName("STAT_ID")
+                .HasColumnName("STA_ID")
                 .IsRequired();
 
             Property(o => o.Responsable)

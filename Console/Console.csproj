@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manager\Bll.csproj">
+      <Project>{656a869b-ba46-4e98-844c-76042dd376a9}</Project>
+      <Name>Bll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Serveur\Serveur.csproj">
       <Project>{be5ff8c4-becd-4099-b8dc-59dede8d1de2}</Project>
       <Name>Serveur</Name>
