@@ -13,7 +13,7 @@ namespace Console
                 // List<Offre> offres = MonContexte.Offres.ToList();
 
                 Manager manager = Manager.Instance;
-                manager.GetOffres();
+                manager.GetAll();
             } catch (Exception ex)
             {
                 throw;
