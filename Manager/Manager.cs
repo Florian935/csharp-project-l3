@@ -39,6 +39,11 @@ namespace Bll
             return _offreQuery.GetOffres().ToList();
         }
 
+        public Offre GetById(int id)
+        {
+            return _offreQuery.GetOffres().Where(o => o.Id == id).FirstOrDefault();
+        }
+
         public int Save(Offre offre)
         {
             return _offreCommand.Save(offre);

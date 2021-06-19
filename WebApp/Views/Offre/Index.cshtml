@@ -1,0 +1,18 @@
+﻿@model List<WebApp.Models.OffreViewModel>
+
+
+@{
+    ViewBag.Title = "Offre";
+}
+
+<h2>Offre</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+    <li>
+        <div>@item.Intitule</div>
+        <button><a href="@Url.Action("Detail", "Offre", new { id = item.Id })">Détails</a></button>
+    </li>
+    }
+</ul>
+
