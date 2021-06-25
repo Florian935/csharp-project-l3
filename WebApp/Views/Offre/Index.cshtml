@@ -16,10 +16,12 @@
 <ul>
     @foreach (var item in Model)
     {
-        <li>
-            <div>@item.Intitule</div>
-            <button><a href="@Url.Action("Detail", "Offre", new { id = item.Id })">Détails</a></button>
-        </li>
+    <li>
+        <div>@item.Intitule</div>
+        <button><a href="@Url.Action("Detail", "Offre", new { id = item.Id })">Détails</a></button>
+        <button><a href="@Url.Action("AddPostulation", "Postulation", new { offreId = item.Id })">Postuler</a></button>
+
+    </li>
     }
 </ul>
 

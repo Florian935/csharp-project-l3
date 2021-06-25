@@ -8,6 +8,7 @@ namespace Serveur.Entities
 {
     public class Postulation
     {
+        public int Id { get; set; }
         public int EmployeId { get; set; }
 
         public Employe Employe { get; set; }
