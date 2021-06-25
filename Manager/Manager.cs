@@ -51,8 +51,9 @@ namespace Bll
         }
         public List<Offre> getOffresByTitle(String search)
         {
-            return _offreQuery.GetOffres().Where(o => o.Intitule.Equals(search)).ToList();
+            return _offreQuery.GetOffres().Where(o => o.Intitule.Contains(search)).ToList();
         }
+
         public void ModifyOffre(Offre o)
         {
             Offre offre = _monContexte.Offres.Where(of => of.Id == o.Id).FirstOrDefault();
