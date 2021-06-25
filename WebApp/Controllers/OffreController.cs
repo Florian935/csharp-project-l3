@@ -11,9 +11,14 @@ namespace WebApp.Controllers
 {
     public class OffreController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(String searchString )
         {
             List<Offre> offres = Manager.Instance.GetAll();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                offres = Manager.Instance.getOffresByTitle(searchString);
+            }
             List<OffreViewModel> offresViewModels = new List<OffreViewModel>();
 
             foreach(Offre offre in offres)
