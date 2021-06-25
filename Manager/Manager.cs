@@ -2,6 +2,7 @@
 using Bll.Query;
 using Serveur;
 using Serveur.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -47,6 +48,31 @@ namespace Bll
         public int Save(Offre offre)
         {
             return _offreCommand.Save(offre);
+        }
+
+        public void ModifyOffre(Offre o)
+        {
+            Offre offre = _monContexte.Offres.Where(of => of.Id == o.Id).FirstOrDefault();
+
+            try
+            {
+                if (offre != null)
+                {
+                    offre.Intitule = o.Intitule;
+                    offre.Salaire = o.Salaire;
+                    offre.Responsable = o.Responsable;
+                    offre.Description = o.Description;
+                    offre.Statut = o.Statut;
+                    offre.DateParution = o.DateParution;
+                    offre.Responsable = o.Responsable;
+
+                }
+                _monContexte.SaveChanges();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
     }
 }

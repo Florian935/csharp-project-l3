@@ -3,33 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition Height="168*"></RowDefinition>
-            <RowDefinition Height="0"></RowDefinition>
-            <RowDefinition Height="97*"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="53*"></ColumnDefinition>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">FICHE OFFRE</Label>
+        <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold" Margin="0,0,0,0.2">DETAIL OFFRE</Label>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
-            <Label Margin="0,0,-31,0">Nom de l'offre</Label>
-            <TextBox Text="{Binding Title}"></TextBox>
-            <Label RenderTransformOrigin="0.68,0.5" Margin="0,0,-48,0">Nom du reponsable</Label>
-            <TextBox Text="{Binding Responsable}"></TextBox>
-            <Label Margin="0,0,-48,0">Salaire de l'offre</Label>
-            <TextBox Text="{Binding Salaire}"></TextBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,35,0,-0.4" Grid.RowSpan="2">
+            <Label>Intitule de l'offre</Label>
+            <TextBox Width="200px" Text="{Binding Intitule}" />
+            <Label>Date de l'offre</Label>
+            <DatePicker Width="200px" SelectedDate="{Binding Date}"/>
+            <Label>Description de l'offre</Label>
+            <TextBox Width="200px" Text="{Binding Description}" />
+            <Label>Salaire de l'offre</Label>
+            <TextBox Width="200px" Text="{Binding Salaire}" />
+            <Label>Responsable de l'offre</Label>
+            <TextBox Width="200px" Text="{Binding Responsable}" />
+            <Button Width="200px" Margin="0,20,0,0" Content="Mettre à jour" Height="35" Command="{Binding ModifyOffre}"/>
         </StackPanel>
-        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold" Margin="0,10,0,59">DERNIERES OPERATIONS</Label>
-        <Button Grid.Column="3" Margin="0,10,10,59" Grid.Row="3" FontSize="12px" Command="{Binding AddOperation}">+</Button>
     </Grid>
 </UserControl>

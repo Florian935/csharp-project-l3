@@ -14,6 +14,7 @@ namespace WpfApp1.ViewModel
         protected BaseViewModel()
         {
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(String propertyName)
@@ -22,6 +23,7 @@ namespace WpfApp1.ViewModel
             if (handler != null)
             {
                 var e = new PropertyChangedEventArgs(propertyName);
+                handler(this, e);
             }
         }
     }

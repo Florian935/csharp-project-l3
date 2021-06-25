@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:my="clr-namespace:WpfApp1.Views"
+             xmlns:local="clr-namespace:WpfApp1.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="525">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200*"></RowDefinition>
-            <RowDefinition Height="99*"></RowDefinition>
+            <RowDefinition Height="20px"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="35px"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -18,25 +19,17 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0"  Grid.Row="0" Grid.RowSpan="2" Margin="5,5,113,1" ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.ColumnSpan="2" SelectionChanged="ListView_SelectionChanged">
+        <TextBox Grid.Column="0"  Grid.Row="0" Margin="7,0,105,0" />
+        <Button Grid.Column="0"  Grid.Row="0" Margin="167,0,5,0" >Filtrer</Button>
+        <ListView Grid.Column="0"  Grid.Row="1" Grid.RowSpan="3" Margin="5px" ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100px" Header="Title" DisplayMemberBinding="{Binding Title}" />
-                    <GridViewColumn Width="150px" Header="Responsable" DisplayMemberBinding="{Binding Responsable}" />
-                    <GridViewColumn Width="150px" Header="Salaire" DisplayMemberBinding="{Binding Salaire}" />
+                    <GridViewColumn Width="100" Header="Intitule" DisplayMemberBinding="{Binding Intitule}" />
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Grid.Column="0" Grid.Row="3" Command="{Binding AddOffre}">Ajouter une offre</Button>
 
-        <my:DetailOffre DataContext="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged}" RenderTransformOrigin="0.5,0.5" Margin="0,0,2,3" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Right" Width="276">
-            <my:DetailOffre.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-359.684"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </my:DetailOffre.RenderTransform>
-        </my:DetailOffre>
+        <local:DetailOffre Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="3" DataContext="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged}"></local:DetailOffre>
     </Grid>
 </UserControl>

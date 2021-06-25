@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using WpfApp1.Views;
 
 namespace WpfApp1.ViewModel
 {
@@ -12,6 +14,7 @@ namespace WpfApp1.ViewModel
     {
         private ObservableCollection<DetalOffreViewModel> _offres = null;
         private DetalOffreViewModel _selectedOffre;
+        private RelayCommand _addOffre;
 
         public ListeOffreViewModel()
         {
@@ -20,7 +23,7 @@ namespace WpfApp1.ViewModel
             {
                 _offres.Add(new DetalOffreViewModel(o));
             }
-            if(_offres!= null && _offres.Count > 0)
+            if (_offres != null && _offres.Count > 0)
             {
                 _selectedOffre = _offres.ElementAt(0);
             }
@@ -32,7 +35,7 @@ namespace WpfApp1.ViewModel
             set {
                 _offres = value;
                   OnPropertyChanged("Offres");
-                    }
+            }
         }
 
         public DetalOffreViewModel SelectedOffre
@@ -43,6 +46,24 @@ namespace WpfApp1.ViewModel
                 _selectedOffre = value;
                 OnPropertyChanged("SelectedOffre");
             }
+        }
+
+        public ICommand AddOffre
+        {
+            get
+            {
+                if (_addOffre == null)
+                {
+                    _addOffre = new RelayCommand(() => this.ShowWindowAddOffre());
+                }
+                return _addOffre;
+            }
+        }
+
+        private void ShowWindowAddOffre()
+        {
+            AddOffre addOffreWindow = new AddOffre();
+            addOffreWindow.ShowDialog();
         }
     }
 }
