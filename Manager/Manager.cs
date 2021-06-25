@@ -49,7 +49,7 @@ namespace Bll
         {
             return _offreCommand.Save(offre);
         }
-        public List<Offre> getOffresByTitle(String search)
+        public List<Offre> getOffresByTitle(string search)
         {
             return _offreQuery.GetOffres().Where(o => o.Intitule.Contains(search)).ToList();
         }

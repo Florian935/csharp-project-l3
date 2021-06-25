@@ -19,8 +19,8 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Column="0"  Grid.Row="0" Margin="7,0,105,0" />
-        <Button Grid.Column="0"  Grid.Row="0" Margin="167,0,5,0" >Filtrer</Button>
+        <TextBox Grid.Column="0" Text="{Binding SearchText}" Grid.Row="0" Margin="7,0,105,0" />
+        <Button Grid.Column="0"  Grid.Row="0" Margin="167,0,5,0" Command="{Binding FilteredOffres}">Filtrer</Button>
         <ListView Grid.Column="0"  Grid.Row="1" Grid.RowSpan="3" Margin="5px" ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
                 <GridView>

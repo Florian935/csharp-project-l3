@@ -15,6 +15,8 @@ namespace WpfApp1.ViewModel
         private ObservableCollection<DetalOffreViewModel> _offres = null;
         private DetalOffreViewModel _selectedOffre;
         private RelayCommand _addOffre;
+        private RelayCommand _filteredOffres;
+        private string _searchText;
 
         public ListeOffreViewModel()
         {
@@ -29,12 +31,19 @@ namespace WpfApp1.ViewModel
             }
 
         }
+
+        public string SearchText
+        {
+            get { return _searchText; }
+            set { _searchText = value; }
+        }
+
         public ObservableCollection<DetalOffreViewModel> Offres
         {
             get { return _offres; }
             set {
                 _offres = value;
-                  OnPropertyChanged("Offres");
+                OnPropertyChanged("Offres");
             }
         }
 
@@ -54,10 +63,33 @@ namespace WpfApp1.ViewModel
             {
                 if (_addOffre == null)
                 {
-                    _addOffre = new RelayCommand(() => this.ShowWindowAddOffre());
+                    _addOffre = new RelayCommand(() => ShowWindowAddOffre());
                 }
                 return _addOffre;
             }
+        }
+
+        public ICommand FilteredOffres
+        {
+            get
+            {
+                if (_filteredOffres == null)
+                {
+                    _filteredOffres = new RelayCommand(() => FilterOffres());
+                }
+                return _filteredOffres;
+            }
+        }
+
+        private void FilterOffres()
+        {
+            List<Offre> offres = Bll.Manager.Instance.getOffresByTitle(_searchText);
+            _offres.Clear();
+            foreach (Offre o in offres)
+            {
+                _offres.Add(new DetalOffreViewModel(o));
+            }
+            SelectedOffre = _offres.ElementAt(0);
         }
 
         private void ShowWindowAddOffre()
