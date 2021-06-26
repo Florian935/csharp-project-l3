@@ -14,11 +14,15 @@ namespace Bll
         private readonly MonContexte _monContexte;
         private readonly OffreQuery _offreQuery;
         private readonly OffreCommand _offreCommand;
+        private readonly PostulationCommand _postulationCommand;
+        private readonly PostulationQuerry _postulationQuery;
 
         private Manager()
         {
             _monContexte = new MonContexte();
             _offreQuery = new OffreQuery(_monContexte);
+            _postulationQuery = new PostulationQuerry(_monContexte);
+            _postulationCommand = new PostulationCommand(_monContexte);
             _offreCommand = new OffreCommand(_monContexte);
         }
 
@@ -39,6 +43,8 @@ namespace Bll
         {
             return _offreQuery.GetOffres().ToList();
         }
+
+      
 
         public Offre GetById(int id)
         {
@@ -77,6 +83,22 @@ namespace Bll
             {
                 Console.WriteLine(exception);
             }
+
+            
+        }
+        public List<Postulation> GetPostulations()
+        {
+            return _postulationQuery.GetPostulations().ToList();
+        }
+        public void AddPostulation(int id)
+        {
+            Postulation postulation = new Postulation();
+            postulation.DatePostulation = DateTime.Now;
+            postulation.OffreId = id;
+            postulation.EmployeId = 3;
+            postulation.Statut = "En cours";
+            _postulationCommand.addPostulation(postulation);
+            
         }
     }
 }

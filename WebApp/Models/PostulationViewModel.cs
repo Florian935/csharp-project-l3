@@ -7,6 +7,7 @@ namespace WebApp.Models
 {
     public class PostulationViewModel
     {
+        public int Id { get; set; }
         public int EmployeId { get; set; }
 
         public EmployeViewModel Employe { get; set; }

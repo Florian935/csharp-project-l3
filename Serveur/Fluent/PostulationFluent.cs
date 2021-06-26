@@ -16,6 +16,10 @@ namespace Serveur.Fluent
             ToTable("APP_POSTULATION");
             HasKey(p => new { p.OffreId, p.EmployeId } );
 
+            Property(p => p.Id)
+              .HasColumnName("POS_ID")
+              .IsRequired()
+              .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
             Property(p => p.OffreId)
                 .HasColumnName("OFF_ID")
                 .IsRequired()

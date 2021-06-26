@@ -52,10 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\PostulationCommand.cs" />
     <Compile Include="Commands\OffreCommand.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\OffreQuery.cs" />
+    <Compile Include="Queries\PostulationQuerry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
