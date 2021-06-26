@@ -55,10 +55,11 @@ namespace Bll
         {
             return _offreCommand.Save(offre);
         }
-        public List<Offre> getOffresByTitle(String search)
+        public List<Offre> getOffresByTitle(string search)
         {
             return _offreQuery.GetOffres().Where(o => o.Intitule.Contains(search)).ToList();
         }
+
         public void ModifyOffre(Offre o)
         {
             Offre offre = _monContexte.Offres.Where(of => of.Id == o.Id).FirstOrDefault();
