@@ -3,7 +3,7 @@ using Serveur.Entities;
 
 namespace Bll.Commands
 {
-    class PostulationCommand
+   public class PostulationCommand
     {
         private readonly MonContexte _monContexte;
 

@@ -16,6 +16,8 @@ namespace Bll
         private readonly OffreCommand _offreCommand;
         private readonly PostulationCommand _postulationCommand;
         private readonly PostulationQuerry _postulationQuery;
+        private readonly EmployeQuerry _employeQuery;
+
 
         private Manager()
         {
@@ -24,6 +26,7 @@ namespace Bll
             _postulationQuery = new PostulationQuerry(_monContexte);
             _postulationCommand = new PostulationCommand(_monContexte);
             _offreCommand = new OffreCommand(_monContexte);
+            _employeQuery = new EmployeQuerry(_monContexte);
         }
 
         public static Manager Instance
@@ -89,6 +92,15 @@ namespace Bll
         public List<Postulation> GetPostulations()
         {
             return _postulationQuery.GetPostulations().ToList();
+        }
+        public List<Postulation> GetPostulationsByUser()
+        {
+            return _postulationQuery.GetPostulations().Where(p => p.EmployeId.Equals(3)).ToList();
+        }
+        public Employe GetEmploye()
+        {
+            return _employeQuery.GetEmploye().Where(e => e.Id.Equals(3)).FirstOrDefault();
+
         }
         public void AddPostulation(int id)
         {
