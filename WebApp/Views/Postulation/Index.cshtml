@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<WebApp.Models.PostulationViewModel>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Liste des postulations";
 }
 
-<h2>View</h2>
+<h2>Liste des postulations</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -40,10 +37,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.OffreId)
         </td>
-<<<<<<< HEAD
-=======
-      
->>>>>>> 761bad47f96fbc513782e62b38f16f10a250084a
     </tr>
 }
 
