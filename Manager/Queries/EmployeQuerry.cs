@@ -8,20 +8,18 @@ using System.Threading.Tasks;
 
 namespace Bll.Query
 {
-  public  class PostulationQuerry
+    public class EmployeQuerry
     {
         private MonContexte _monContexte;
 
-        public PostulationQuerry(MonContexte monContexte)
+        public EmployeQuerry(MonContexte monContexte)
         {
             _monContexte = monContexte;
         }
 
-        public IQueryable<Postulation> GetPostulations()
+        public IQueryable<Employe> GetEmploye()
         {
-            return _monContexte.Postulations;
+            return _monContexte.Employes;
         }
-        
-
     }
 }
